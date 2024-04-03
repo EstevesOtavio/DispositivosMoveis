@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Formulário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form="ngForm" (ngSubmit)="cadastrar(form)">
+
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input name="nome" [(ngModel)]="dados.nome" type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gênero</ion-label>
+      <ion-select name="genero" [(ngModel)]="dados.genero" interface="action-sheet" required>
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="feminino">Feminino</ion-select-option>
+        <ion-select-option value="outro">Outro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input name="telefone" [(ngModel)]="dados.telefone" type="tel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Matrícula</ion-label>
+      <ion-input name="matricula" [(ngModel)]="dados.matricula" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Aluno Bilíngue</ion-label>
+      <ion-toggle name="bilingue" [(ngModel)]="dados.bilingue"></ion-toggle>
+      <ion-label></ion-label>
+    </ion-item>
+
+    <ion-item>
+    <ion-label>Cursos</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox-group name="languages" [(ngModel)]="languages">
+        <ion-checkbox value="html">Html</ion-checkbox>
+        <ion-checkbox value="php">Php</ion-checkbox>
+        <ion-checkbox value="javascrip">JavaScript</ion-checkbox>
+      </ion-checkbox-group>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="!form.valid">Cadastrar</ion-button>
+
+  </form>
+</ion-content>
