@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar objeto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="salvar(form)">
+    <!-- Input de Texto - Nome -->
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input name="nome" [(ngModel)]="objeto.nome" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Input de Texto - Idade -->
+    <ion-item>
+      <ion-label position="floating">Idade</ion-label>
+      <ion-input name="idade" [(ngModel)]="objeto.idade" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Select - Gênero -->
+    <ion-item>
+      <ion-label>Gênero</ion-label>
+      <ion-select name="genero" [(ngModel)]="objeto.genero" interface="action-sheet" required>
+        <ion-select-option value="masculino">Masculino</ion-select-option>
+        <ion-select-option value="feminino">Feminino</ion-select-option>
+        <ion-select-option value="outro">Outro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Input de Texto - Email -->
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input name="Idade" [(ngModel)]="objeto.email" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Input de Texto - Telefone -->
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input name="telefone" [(ngModel)]="objeto.telefone" type="tel" required></ion-input>
+    </ion-item>
+
+    <!-- Input de Texto - Endereço -->
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input name="telefone" [(ngModel)]="objeto.endereco" type="text" required></ion-input>
+    </ion-item>
+
+    <!-- Select - Cidade -->
+    <ion-item>
+      <ion-label>Cidade</ion-label>
+      <ion-select name="cidade" [(ngModel)]="objeto.cidade" interface="action-sheet" required>
+        <ion-select-option value="sao_paulo">São Paulo</ion-select-option>
+        <ion-select-option value="rio_de_janeiro">Rio de Janeiro</ion-select-option>
+        <ion-select-option value="belo_horizonte">Belo Horizonte</ion-select-option>
+        <ion-select-option value="outra">Outra</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Checkbox -Interesses -->
+    <ion-item>
+      <ion-label>Interesses</ion-label>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>Esportes</ion-label>
+      <ion-checkbox *ngIf="objeto.interesses[0]" checked="true" slot="start" (ionChange)="atualizarOpcao1()"></ion-checkbox>
+      <ion-checkbox *ngIf="!objeto.interesses[0]" checked="false" slot="start" (ionChange)="atualizarOpcao1()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Música</ion-label>
+      <ion-checkbox *ngIf="objeto.interesses[1]" checked="true" slot="start" (ionChange)="atualizarOpcao2()"></ion-checkbox>
+      <ion-checkbox *ngIf="!objeto.interesses[1]" checked="false" slot="start" (ionChange)="atualizarOpcao2()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Leitura</ion-label>
+      <ion-checkbox *ngIf="objeto.interesses[2]" checked="true" slot="start" (ionChange)="atualizarOpcao3()"></ion-checkbox>
+      <ion-checkbox *ngIf="!objeto.interesses[2]" checked="false" slot="start" (ionChange)="atualizarOpcao3()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Viagens</ion-label>
+      <ion-checkbox *ngIf="objeto.interesses[3]" checked="true" slot="start" (ionChange)="atualizarOpcao4()"></ion-checkbox>
+      <ion-checkbox *ngIf="!objeto.interesses[3]" checked="false" slot="start" (ionChange)="atualizarOpcao4()"></ion-checkbox>
+    </ion-item>
+
+    <!-- Toggle - Newsletter -->
+    <ion-item>
+      <ion-label>Receber Newsletter</ion-label>
+      <ion-toggle name="newsletter" [(ngModel)]="objeto.newsletter"></ion-toggle>
+    </ion-item>
+
+    <ion-button id="open-toast" type="submit" expand="block" [disabled]="!form.valid">
+      Salvar
+      <ion-toast trigger="open-toast" message="Usuário alterado com sucesso!" [duration]="5000"></ion-toast>
+    </ion-button>
+  </form>
+</ion-content>
